@@ -1,13 +1,14 @@
 ﻿using GraphQLRestaurantReservation.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace GraphQLRestaurantReservation.Interfaces
 {
     public interface ICategoryRepository
     {
-        List<Category> GetCategories();
-        Category AddCategory(Category category);
-        Category UpdateCategory(int id, Category category);
-        void DeleteCategory(int id);
+        Task<List<Category>> GetCategories();
+        Task<Category> AddCategory(Category category);
+        Task<Category> UpdateCategory(int id, Category category);
+        Task DeleteCategory(int id);
     }
 }

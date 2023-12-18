@@ -7,6 +7,6 @@ namespace GraphQLRestaurantReservation.Interfaces
     public interface IReservationRepository
     {
         Task<List<Reservation>> GetReservations();
-        Reservation AddReservation(Reservation reservation);
+        Task<Reservation> AddReservation(Reservation reservation);
     }
 }

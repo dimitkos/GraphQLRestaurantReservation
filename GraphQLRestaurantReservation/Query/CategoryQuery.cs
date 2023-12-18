@@ -8,9 +8,9 @@ namespace GraphQLRestaurantReservation.Query
     {
         public CategoryQuery(ICategoryRepository categoryRepository)
         {
-            Field<ListGraphType<CategoryType>>("Categories").Resolve(context =>
+            Field<ListGraphType<CategoryType>>("Categories").ResolveAsync(async (context) =>
             {
-                return categoryRepository.GetCategories();
+                return await categoryRepository.GetCategories();
             });
         }
     }

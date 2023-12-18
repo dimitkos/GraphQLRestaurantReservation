@@ -7,14 +7,6 @@ namespace GraphQLRestaurantReservation.Query
 {
     public class ReservationQuery : ObjectGraphType
     {
-        //public ReservationQuery(IReservationRepository reservationRepository)
-        //{
-        //    Field<ListGraphType<ReservationType>>("Reservations").Resolve(context =>
-        //    {
-        //        return reservationRepository.GetReservations();
-        //    });
-        //}
-
         public ReservationQuery(IReservationRepository reservationRepository)
         {
             Field<ListGraphType<ReservationType>>("Reservations")

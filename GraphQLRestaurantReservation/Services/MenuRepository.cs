@@ -1,12 +1,12 @@
 ﻿using GraphQLRestaurantReservation.Data;
 using GraphQLRestaurantReservation.Interfaces;
 using GraphQLRestaurantReservation.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Linq;
+using System.Threading.Tasks;
 
 namespace GraphQLRestaurantReservation.Services
 {
-#warning make them async
     public class MenuRepository : IMenuRepository
     {
         private readonly GraphQLDbContext _context;
@@ -16,45 +16,45 @@ namespace GraphQLRestaurantReservation.Services
             _context = context;
         }
 
-        public Menu AddMenu(Menu menu)
+        public async Task<Menu> AddMenu(Menu menu)
         {
             _context.Menus.Add(menu);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return menu;
         }
 
-        public void DeleteMenu(int id)
+        public async Task DeleteMenu(int id)
         {
-            var menuResult = _context.Menus.Find(id);
+            var menuResult = await _context.Menus.FindAsync(id);
 
             if (menuResult is null)
                 return;
 
             _context.Menus.Remove(menuResult);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public List<Menu> GetAllMenu()
+        public async Task<List<Menu>> GetAllMenu()
         {
-            return _context.Menus.ToList();
+            return await _context.Menus.ToListAsync();
         }
 
-        public Menu GetMenuById(int id)
+        public async Task<Menu> GetMenuById(int id)
         {
-            return _context.Menus.Find(id) ?? new Menu();
+            return await _context.Menus.FindAsync(id) ?? new Menu();
         }
 
-        public Menu UpdateMenu(int id, Menu menu)
+        public async Task<Menu> UpdateMenu(int id, Menu menu)
         {
-            var menuResult = _context.Menus.Find(id);
+            var menuResult = await _context.Menus.FindAsync(id);
 
             if (menuResult is null)
                 return new Menu();
 
             menuResult.Name = menu.Name;
             menuResult.Description = menu.Description;
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return menu;
         }

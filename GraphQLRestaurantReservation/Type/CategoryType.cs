@@ -13,9 +13,9 @@ namespace GraphQLRestaurantReservation.Type
             Field(m => m.ImageUrl);
 
 #warning impleme a handling one to many relationship
-            Field<ListGraphType<MenuType>>("Menus").Resolve(context =>
+            Field<ListGraphType<MenuType>>("Menus").ResolveAsync(async (context) =>
             {
-                return menuRepository.GetAllMenu();
+                return await menuRepository.GetAllMenu();
             });
         }
     }

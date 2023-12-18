@@ -3,7 +3,6 @@ using GraphQLRestaurantReservation.Interfaces;
 using GraphQLRestaurantReservation.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace GraphQLRestaurantReservation.Services
@@ -17,10 +16,10 @@ namespace GraphQLRestaurantReservation.Services
             _context = context;
         }
 
-        public Reservation AddReservation(Reservation reservation)
+        public async Task<Reservation> AddReservation(Reservation reservation)
         {
             _context.Reservations.Add(reservation);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return reservation;
         }

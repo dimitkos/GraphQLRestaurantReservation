@@ -10,10 +10,11 @@ namespace GraphQLRestaurantReservation.Mutation
     {
         public ReservationMutation(IReservationRepository reservationRepository)
         {
-            Field<ReservationType>("CreateReservation").Arguments(new QueryArguments(new QueryArgument<ReservationInputType> { Name = "reservation" })).Resolve(context =>
-            {
-                return reservationRepository.AddReservation(context.GetArgument<Reservation>("reservation"));
-            });
+            Field<ReservationType>("CreateReservation").Arguments(new QueryArguments(new QueryArgument<ReservationInputType> { Name = "reservation" }))
+                .ResolveAsync(async (context) =>
+                {
+                    return await reservationRepository.AddReservation(context.GetArgument<Reservation>("reservation"));
+                });
         }
     }
 }

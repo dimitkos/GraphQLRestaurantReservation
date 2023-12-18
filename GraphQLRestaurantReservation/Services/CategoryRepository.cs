@@ -1,8 +1,9 @@
 ﻿using GraphQLRestaurantReservation.Data;
 using GraphQLRestaurantReservation.Interfaces;
 using GraphQLRestaurantReservation.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Linq;
+using System.Threading.Tasks;
 
 namespace GraphQLRestaurantReservation.Services
 {
@@ -15,40 +16,40 @@ namespace GraphQLRestaurantReservation.Services
             _context = context;
         }
 
-        public Category AddCategory(Category category)
+        public async Task<Category> AddCategory(Category category)
         {
             _context.Categories.Add(category);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return category;
         }
 
-        public void DeleteCategory(int id)
+        public async Task DeleteCategory(int id)
         {
-            var categoryResult = _context.Categories.Find(id);
+            var categoryResult = await _context.Categories.FindAsync(id);
 
             if (categoryResult is null)
                 return;
 
             _context.Categories.Remove(categoryResult);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public List<Category> GetCategories()
+        public async Task<List<Category>> GetCategories()
         {
-            return _context.Categories.ToList();
+            return await _context.Categories.ToListAsync();
         }
 
-        public Category UpdateCategory(int id, Category category)
+        public async Task<Category> UpdateCategory(int id, Category category)
         {
-            var categoryResult = _context.Categories.Find(id);
+            var categoryResult = await _context.Categories.FindAsync(id);
 
             if (categoryResult is null)
                 return new Category();
 
             categoryResult.Name = category.Name;
             categoryResult.ImageUrl = category.ImageUrl;
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return category;
         }

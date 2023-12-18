@@ -9,16 +9,16 @@ namespace GraphQLRestaurantReservation.Query
     {
         public MenuQuery(IMenuRepository menuRepository) 
         {
-            Field<ListGraphType<MenuType>>("Menus").Resolve(context => 
+            Field<ListGraphType<MenuType>>("Menus").ResolveAsync(async (context) => 
             {
-                return menuRepository.GetAllMenu();
+                return await menuRepository.GetAllMenu();
             });
 
             Field<MenuType>("Menu")
                 .Arguments(new QueryArguments(new QueryArgument<IntGraphType> { Name = "menuId"}))
-                .Resolve(context =>
+                .ResolveAsync(async (context) =>
                 {
-                    return menuRepository.GetMenuById(context.GetArgument<int>("menuId"));
+                    return await menuRepository.GetMenuById(context.GetArgument<int>("menuId"));
                 });
         }
     }
