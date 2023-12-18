@@ -1,0 +1,4 @@
+﻿﻿Add-Migration [MigrationName] -Context GraphQLDbContext -OutputDir DatabaseContext\Migrations
+Remove-Migration -context GraphQLDbContext 
+Update-Database -context GraphQLDbContext 
+Script-Migration -From [OldMigrationName] -To [NewMigrationName] -Context GraphQLDbContext 
