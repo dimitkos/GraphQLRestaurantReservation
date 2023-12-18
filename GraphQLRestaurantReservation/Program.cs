@@ -19,27 +19,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddTransient<IMenuRepository, MenuRepository>();
-builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
-builder.Services.AddTransient<IReservationRepository, ReservationRepository>();
+RegisterServices(builder);
 
-builder.Services.AddTransient<MenuType>();
-builder.Services.AddTransient<CategoryType>();
-builder.Services.AddTransient<ReservationType>();
-
-builder.Services.AddTransient<MenuQuery>();
-builder.Services.AddTransient<CategoryQuery>();
-builder.Services.AddTransient<ReservationQuery>();
-builder.Services.AddTransient<RootQuery>();
-
-builder.Services.AddTransient<MenuMutation>();
-builder.Services.AddTransient<CategoryMutation>();
-builder.Services.AddTransient<ReservationMutation>();
-builder.Services.AddTransient<RootMutation>();
-
-builder.Services.AddTransient<CategoryInputType>();
-builder.Services.AddTransient<MenuInputType>();
-builder.Services.AddTransient<ReservationInputType>();
+GraphqlConfiguration(builder);
 
 builder.Services.AddTransient<ISchema, RootSchema>();
 
@@ -61,3 +43,48 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+static void RegisterServices(WebApplicationBuilder builder)
+{
+    builder.Services.AddTransient<IMenuRepository, MenuRepository>();
+    builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
+    builder.Services.AddTransient<IReservationRepository, ReservationRepository>();
+}
+
+static void RegisterTypes(WebApplicationBuilder builder)
+{
+    builder.Services.AddTransient<MenuType>();
+    builder.Services.AddTransient<CategoryType>();
+    builder.Services.AddTransient<ReservationType>();
+}
+
+static void RegisterQueries(WebApplicationBuilder builder)
+{
+    builder.Services.AddTransient<MenuQuery>();
+    builder.Services.AddTransient<CategoryQuery>();
+    builder.Services.AddTransient<ReservationQuery>();
+    builder.Services.AddTransient<RootQuery>();
+}
+
+static void RegisterMutations(WebApplicationBuilder builder)
+{
+    builder.Services.AddTransient<MenuMutation>();
+    builder.Services.AddTransient<CategoryMutation>();
+    builder.Services.AddTransient<ReservationMutation>();
+    builder.Services.AddTransient<RootMutation>();
+}
+
+static void RegisterInputTypes(WebApplicationBuilder builder)
+{
+    builder.Services.AddTransient<CategoryInputType>();
+    builder.Services.AddTransient<MenuInputType>();
+    builder.Services.AddTransient<ReservationInputType>();
+}
+
+static void GraphqlConfiguration(WebApplicationBuilder builder)
+{
+    RegisterTypes(builder);
+    RegisterQueries(builder);
+    RegisterMutations(builder);
+    RegisterInputTypes(builder);
+}
