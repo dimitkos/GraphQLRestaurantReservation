@@ -1,4 +1,5 @@
-﻿using GraphQLRestaurantReservation.Query;
+﻿using GraphQLRestaurantReservation.Mutation;
+using GraphQLRestaurantReservation.Query;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
@@ -8,7 +9,8 @@ namespace GraphQLRestaurantReservation.Schema
     {
         public RootSchema(IServiceProvider serviceProvider) : base(serviceProvider)
         {
-            Query = serviceProvider.GetRequiredService<RootQuery>();  
+            Query = serviceProvider.GetRequiredService<RootQuery>(); 
+            Mutation = serviceProvider.GetRequiredService<RootMutation>(); 
         }
     }
 }
