@@ -1,5 +1,6 @@
 ﻿using GraphQL.Types;
 using GraphQLRestaurantReservation.Interfaces;
+using GraphQLRestaurantReservation.Services;
 using GraphQLRestaurantReservation.Type;
 
 namespace GraphQLRestaurantReservation.Query
@@ -16,8 +17,8 @@ namespace GraphQLRestaurantReservation.Query
 
         public ReservationQuery(IReservationRepository reservationRepository)
         {
-            FieldAsync<ListGraphType<ReservationType>>("posts",
-            resolve: async (context) => await reservationRepository.GetReservations());
+            Field<ListGraphType<ReservationType>>("Reservations")
+             .ResolveAsync(async (context) => await reservationRepository.GetReservations());
         }
     }
 }
