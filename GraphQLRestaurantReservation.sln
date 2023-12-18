@@ -5,7 +5,11 @@ VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphQLRestaurantReservation", "GraphQLRestaurantReservation\GraphQLRestaurantReservation.csproj", "{71D16AB7-080E-41D2-93D1-3B686DD79F7F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary1", "ClassLibrary1\ClassLibrary1.csproj", "{6EBBFC88-7BBB-42E1-8932-E54D94AC20CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{6EBBFC88-7BBB-42E1-8932-E54D94AC20CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{F672C832-74A3-475F-9096-29C506F93978}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{15B05FAE-A383-49C8-A29A-02281081BB1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{6EBBFC88-7BBB-42E1-8932-E54D94AC20CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EBBFC88-7BBB-42E1-8932-E54D94AC20CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6EBBFC88-7BBB-42E1-8932-E54D94AC20CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F672C832-74A3-475F-9096-29C506F93978}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F672C832-74A3-475F-9096-29C506F93978}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F672C832-74A3-475F-9096-29C506F93978}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F672C832-74A3-475F-9096-29C506F93978}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15B05FAE-A383-49C8-A29A-02281081BB1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15B05FAE-A383-49C8-A29A-02281081BB1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15B05FAE-A383-49C8-A29A-02281081BB1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15B05FAE-A383-49C8-A29A-02281081BB1E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

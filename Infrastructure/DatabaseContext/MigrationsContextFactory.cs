@@ -9,7 +9,7 @@ namespace Infrastructure.DatabaseContext
         public GraphQLDbContext CreateDbContext(string[] args)
         {
             var configuration = new ConfigurationBuilder()
-                .SetBasePath(Path.GetFullPath(@"../Api/"))
+                .SetBasePath(Path.GetFullPath(@"../GraphQLRestaurantReservation/"))
                 .AddJsonFile("appsettings.json")
                 //.AddJsonFile("appsettings.Development.json", optional: false)
                 .Build();
